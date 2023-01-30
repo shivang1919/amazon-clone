@@ -8,6 +8,7 @@ const authenticate = require("../middleware/authenticate");
 // getproductsdata api
 router.get("/getproducts", async (req, res) => {
     try {
+        console.log('heei');
         const productsdata = await Products.find();
         // console.log("console the data" + productsdata);
         res.status(201).json(productsdata);
@@ -17,7 +18,7 @@ router.get("/getproducts", async (req, res) => {
 })
 
 
-// get indivisual data
+// get individual data
 router.get("/getproductsone/:id", async (req, res) => {
     try {
         const { id } = req.params;
@@ -132,27 +133,27 @@ router.get("/validuser", authenticate, async (req, res) => {
     }
 })
 // remove item from cart
-router.delete("/remove/:id",authenticate,async(req,res)=>{
+router.delete("/remove/:id", authenticate, async (req, res) => {
     try {
-        const {id} = req.params;
-        req.rootUser.carts = req.rootUser.carts.filter((cremoval)=>{
+        const { id } = req.params;
+        req.rootUser.carts = req.rootUser.carts.filter((cremoval) => {
             return cremoval.id != id;
         })
         req.rootUser.save();
         res.status(201).json(req.rootUser);
         console.log("item remove");
     } catch (error) {
-        console.log("error"+error);
+        console.log("error" + error);
         res.status(400).json(req.rootUser);
     }
 })
 // logout api
-router.get("/logout",authenticate,(req,res)=>{
+router.get("/logout", authenticate, (req, res) => {
     try {
-        req.rootUser.tokens = req.rootUser.tokens.filter((curelem)=>{
+        req.rootUser.tokens = req.rootUser.tokens.filter((curelem) => {
             return curelem.token !== req.token
         })
-        res.clearCookie("Amazonweb",{path:"/"})
+        res.clearCookie("Amazonweb", { path: "/" })
         req.rootUser.save();
         res.status(201).json(req.rootUser.tokens);
         console.log("user logout");

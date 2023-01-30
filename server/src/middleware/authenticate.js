@@ -3,6 +3,7 @@ const USER = require("../models/userSchema");
 const secretKey = process.env.KEY;
 const authenticate = async (req, res, next) => {
     try {
+        console.log('here in auth')
         const token = req.cookies.Amazonweb;
         const verifyToken = jwt.verify(token, secretKey);
         console.log(verifyToken);
