@@ -50,7 +50,7 @@ const Slide = ({ title, products }) => {
                 containerClass="carousel-container"
             >
                 {
-                    products && products.map((e) => {
+                    products && products?.map((e) => {
 
                         return (
 

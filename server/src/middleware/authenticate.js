@@ -17,7 +17,7 @@ const authenticate = async (req, res, next) => {
         req.userID = rootUser._id
         next();
     } catch (error) {
-        res.status(401).send("unauthorized:No token provide")
+        res.status(401).json({unauthorized:"No token provide"})
         console.log(error)
     }
 }

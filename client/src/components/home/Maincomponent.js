@@ -10,7 +10,9 @@ const Maincomponent = () => {
 
     const dispatch = useDispatch();
     useEffect(() => {
+        console.log(1);
         dispatch(getProducts());
+        console.log(2);
     }, [dispatch]);
 
     return (
@@ -18,7 +20,10 @@ const Maincomponent = () => {
             <div className="banner_part">
                 <Banner />
             </div>
-            <div className="slide_part">
+            {
+                products && 
+                <>
+                <div className="slide_part">
                 <div className="left_slide">
                     <Slide title="Deal Of The Day" products={products} />
                 </div>
@@ -34,7 +39,12 @@ const Maincomponent = () => {
             </div>
             <Slide title="Best Seller" products={products} />
             <Slide title="Upto 80% Off" products={products} />
-        </div>
+            </>
+        
+        
+            }
+            </div>
+            
 
     )
 }

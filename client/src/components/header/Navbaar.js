@@ -101,7 +101,7 @@ const Navbaar = () => {
                         <MenuIcon style={{ color: "#fff" }} />
                     </IconButton>
                     <Drawer open={dropen} onclose={handleclose}>
-                        <Rightheader logclose={handleclose} logoutuser={logoutuser}/>
+                        <Rightheader logclose={handleclose} logoutuser={logoutuser} />
                     </Drawer>
                     <div className="navlogo">
                         <NavLink to="/"><img src="./amazon_PNG25.png" alt="" /></NavLink>
@@ -117,10 +117,10 @@ const Navbaar = () => {
                             text &&
                             <List className='extrasearch' hidden={liopen}>
                                 {
-                                    products.filter(product =>product.title.longTitle.toLowerCase().includes(text.toLowerCase())).map(product=>(
+                                    products.filter(product => product.title.longTitle.toLowerCase().includes(text.toLowerCase())).map(product => (
                                         <ListItem>
                                             <NavLink to={`/getproductsone/${product.id}`} onClick={() => setLiopen(true)}>{product.title.longTitle}</NavLink>
-                                            
+
                                         </ListItem>
                                     ))
                                 }
