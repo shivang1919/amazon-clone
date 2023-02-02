@@ -1,4 +1,4 @@
-# Whatsapp-Clone
+# amazon-clone
 
 This is a Simple clone of Amazon Web site which allows us to add products to our cart.
 
